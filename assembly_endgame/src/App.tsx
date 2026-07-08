@@ -9,24 +9,24 @@ export default function AssemblyEndgame() {
   const [currentWord, setCurrentWord] = useState<string>((): string =>
     getRandomWord(),
   );
-
-  /*
-    CHALLENGE: type the guessedLetters/setGuessedLetters state
-    */
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   // Derived values
-  const numGuessesLeft = languages.length - 1;
-  const wrongGuessCount = guessedLetters.filter(
-    (letter) => !currentWord.includes(letter),
+
+  /*
+    CHALLENGE: Type all the derived values and arrow functions
+  */
+  const numGuessesLeft: number = languages.length - 1;
+  const wrongGuessCount: number = guessedLetters.filter(
+    (letter: string): boolean => !currentWord.includes(letter),
   ).length;
-  const isGameWon = currentWord
+  const isGameWon: boolean = currentWord
     .split("")
-    .every((letter) => guessedLetters.includes(letter));
-  const isGameLost = wrongGuessCount >= numGuessesLeft;
-  const isGameOver = isGameWon || isGameLost;
-  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
-  const isLastGuessIncorrect =
+    .every((letter: string): boolean => guessedLetters.includes(letter));
+  const isGameLost: boolean = wrongGuessCount >= numGuessesLeft;
+  const isGameOver: boolean = isGameWon || isGameLost;
+  const lastGuessedLetter: string = guessedLetters[guessedLetters.length - 1];
+  const isLastGuessIncorrect: boolean | string =
     lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
   // Static values
