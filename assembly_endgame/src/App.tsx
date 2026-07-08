@@ -13,9 +13,6 @@ export default function AssemblyEndgame() {
 
   // Derived values
 
-  /*
-    CHALLENGE: Type all the derived values and arrow functions
-  */
   const numGuessesLeft: number = languages.length - 1;
   const wrongGuessCount: number = guessedLetters.filter(
     (letter: string): boolean => !currentWord.includes(letter),
@@ -32,13 +29,20 @@ export default function AssemblyEndgame() {
   // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-  function addGuessedLetter(letter) {
-    setGuessedLetters((prevLetters) =>
+  /*
+    CHALLENGE: Fully type the addGuessedLetter() function
+    HINT: There are 4 places that we can add type annotations!
+  */
+  function addGuessedLetter(letter: string): void {
+    setGuessedLetters((prevLetters: string[]): string[] =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter],
     );
   }
 
-  function startNewGame() {
+  /*
+    CHALLENGE: Fully type the startNewGame() function
+  */
+  function startNewGame(): void {
     setCurrentWord(getRandomWord());
     setGuessedLetters([]);
   }
