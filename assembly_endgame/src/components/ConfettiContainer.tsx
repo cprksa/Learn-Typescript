@@ -1,6 +1,10 @@
+import type { JSX } from "react";
 import Confetti from "react-confetti";
 
-export default function ConfettiContainer({ isGameWon }) {
+/*
+CHALLENGE: Explictly type the ConfettiContainer component's return value
+*/
+export default function ConfettiContainer({ isGameWon }): JSX.Element | null {
   if (!isGameWon) {
     return null;
   } else {
