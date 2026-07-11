@@ -3,11 +3,13 @@ import clsx from "clsx";
 import { getFarewellText } from "../utils";
 import { languages } from "../languages";
 
-/*
-CHALLENGE 1: Explictly type the GameStatus component's return value
-CHALLENGE 2: Type all the props of GameStatus
-             (Unsure of the types? Check App.tsx!)
-*/
+type GameStatusProps = {
+  isGameWon: boolean;
+  isGameLost: boolean;
+  isGameOver: boolean;
+  isLastGuessIncorrect: boolean | string;
+  wrongGuessCount: number;
+};
 
 export default function GameStatus({
   isGameWon,
@@ -15,14 +17,11 @@ export default function GameStatus({
   isGameOver,
   isLastGuessIncorrect,
   wrongGuessCount,
-}: {
-  isGameWon: boolean;
-  isGameLost: boolean;
-  isGameOver: boolean;
-  isLastGuessIncorrect: boolean | string;
-  wrongGuessCount: number;
-}): JSX.Element {
-  const gameStatusClass = clsx("game-status", {
+}: GameStatusProps): JSX.Element {
+  /*
+     CHALLENGE: Type the gameStatusClass variable
+  */
+  const gameStatusClass: string = clsx("game-status", {
     won: isGameWon,
     lost: isGameLost,
     farewell: !isGameOver && isLastGuessIncorrect,
