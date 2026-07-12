@@ -1,6 +1,23 @@
-import { clsx } from "clsx";
+/*
+CHALLENGE 1: Somehow access the Language type in
+             `languages.ts` from `LanguageChips.tsx`
+CHALLENGE 2: Use it to type the languages prop
+CHALLENGE 3: Type the remaining props
+*/
 
-export default function LanguageChips({ languages, wrongGuessCount }) {
+import { clsx } from "clsx";
+import type { JSX } from "react";
+import type { Language } from "../languages";
+
+type LanguageChipsProps = {
+  languages: Language[];
+  wrongGuessCount: number;
+};
+
+export default function LanguageChips({
+  languages,
+  wrongGuessCount,
+}: LanguageChipsProps): JSX.Element {
   const languageElements = languages.map((lang, index) => {
     const isLanguageLost = index < wrongGuessCount;
     const styles = {
