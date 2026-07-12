@@ -1,0 +1,2 @@
+After reset --soft and reset --hard (to undo),
+I want to check if we can still push to remote without any problem.
