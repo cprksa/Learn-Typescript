@@ -11,18 +11,8 @@ export default function LanguageChips({
   languages,
   wrongGuessCount,
 }: LanguageChipsProps): JSX.Element {
-  /*
-    CHALLENGE 1: Type lang and index, the parameters of the callback function
-    CHALLENGE 2: Type the return value of the callback function
-    CHALLENGE 3: Type languageElements
-  */
   const languageElements: JSX.Element[] = languages.map(
     (lang: Language, index: number): JSX.Element => {
-      /*
-        CHALLENGE: Type isLanguageLost, styles, and className
-        HINT: TS's Omit utility type might come in handy here!
-      */
-
       const isLanguageLost: boolean = index < wrongGuessCount;
       const styles: Omit<Language, "name"> = {
         backgroundColor: lang.backgroundColor,
