@@ -1,10 +1,5 @@
 import type { JSX } from "react";
 
-/*
-CHALLENGE: Try to type startNewGame
-SYNTAX: prop: (parameters) => returnType
-*/
-
 type NewGameButtonProps = {
   isGameOver: boolean;
   startNewGame: () => void;
