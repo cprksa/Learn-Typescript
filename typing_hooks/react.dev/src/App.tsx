@@ -9,7 +9,7 @@ export default function MyApp() {
   const [theme, setTheme] = useState<Theme>("light");
 
   return (
-    <ThemeContext value={theme}>
+    <ThemeContext value="dark">
       <MyComponent />
     </ThemeContext>
   );
