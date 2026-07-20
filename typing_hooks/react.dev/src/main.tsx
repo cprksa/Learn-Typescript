@@ -8,3 +8,10 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </StrictMode>,
 );
+
+function useCallbackFake<T>(callback: T): T {
+  return callback;
+}
+
+const f1 = useCallbackFake<(a: number, b: number) => number>((a, b) => a + b);
+const f2 = useCallbackFake((a: number, b: number) => a + b);
