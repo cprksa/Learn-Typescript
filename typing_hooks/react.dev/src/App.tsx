@@ -1,16 +1,19 @@
-import { useMemo, useState } from "react";
+import { useState, useCallback } from "react";
 
-function joinWithoutComma<T>(arr: T[]) {
-  return arr.join("");
-}
+export default function Form() {
+  const [value, setValue] = useState("Change me");
 
-export default function MyApp() {
-  const [data, _] = useState<number[]>([1, 9, 3]);
-  const derivedData: string = useMemo(() => joinWithoutComma(data), [data]);
+  const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
+    (event) => {
+      setValue(event.currentTarget.value);
+    },
+    [setValue],
+  );
 
   return (
-    <div>
-      <p>Derived data as a string: {derivedData}</p>
-    </div>
+    <>
+      <input value={value} onChange={handleChange} />
+      <p>Value: {value}</p>
+    </>
   );
 }
