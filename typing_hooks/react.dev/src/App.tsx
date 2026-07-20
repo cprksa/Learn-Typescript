@@ -1,38 +1,16 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 
-// This is a simpler example, but you can imagine a more complex object here
-type ComplexObject = {
-  kind: string;
-};
-
-// The context is created with `| null` in the type, to accurately reflect the default value.
-const Context = createContext<ComplexObject | null>(null);
-
-// The `| null` will be removed via the check in the Hook.
-const useGetComplexObject = () => {
-  const object = useContext(Context);
-  if (!object) {
-    throw new Error("useGetComplexObject must be used within a Provider");
-  }
-  return object;
-};
-
-export default function MyApp() {
-  const object = useMemo(() => ({ kind: "complex" }), []);
-
-  return (
-    <Context value={object}>
-      <MyComponent />
-    </Context>
-  );
+function joinWithoutComma<T>(arr: T[]) {
+  return arr.join("");
 }
 
-function MyComponent() {
-  const object = useGetComplexObject();
+export default function MyApp() {
+  const [data, _] = useState<number[]>([1, 9, 3]);
+  const derivedData: string = useMemo(() => joinWithoutComma(data), [data]);
 
   return (
     <div>
-      <p>Current object: {object.kind}</p>
+      <p>Derived data as a string: {derivedData}</p>
     </div>
   );
 }
