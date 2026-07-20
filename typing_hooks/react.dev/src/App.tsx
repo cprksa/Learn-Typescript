@@ -1,19 +1,47 @@
 import { useState, useCallback } from "react";
 
 export default function Form() {
-  const [value, setValue] = useState("Change me");
+  const [valueA, setValueA] = useState("Start typing...");
+  const [valueB, setValueB] = useState("Start typing...");
 
-  const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
-    (event) => {
-      setValue(event.currentTarget.value);
+  const handleChangeA = useCallback<
+    (e: React.ChangeEvent<HTMLInputElement>, t: number) => void
+  >(
+    (event, times) => {
+      const newValue = event.target.value.repeat(times);
+      setValueA(newValue);
     },
-    [setValue],
+    [setValueA],
+  );
+
+  const handleChangeB = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>, times: number) => {
+      const newValue = event.target.value + times;
+      setValueB(newValue);
+    },
+    [setValueB],
   );
 
   return (
     <>
-      <input value={value} onChange={handleChange} />
-      <p>Value: {value}</p>
+      <h1>Form</h1>
+      <Part n={10} v={valueA} onChange={handleChangeA} />
+      <Part n={5} v={valueB} onChange={handleChangeB} />
+    </>
+  );
+}
+
+type PartProps = {
+  n: number;
+  v: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>, t: number) => void;
+};
+
+function Part({ n, v, onChange }: PartProps) {
+  return (
+    <>
+      <input onChange={(e) => onChange(e, n)} />
+      <p>Value: {v}</p>
     </>
   );
 }
