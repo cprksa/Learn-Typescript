@@ -1,14 +1,16 @@
 import { useRef } from "react";
 
-export default function Counter() {
-  let countRef = useRef(0);
+export default function Form() {
+  const inputRef = useRef(null);
 
   function handleClick() {
-    // This doesn't re-render the component!
-    countRef.current = countRef.current + 1;
+    inputRef.current.focus();
   }
 
   return (
-    <button onClick={handleClick}>You clicked {countRef.current} times</button>
+    <>
+      <input ref={inputRef} />
+      <button onClick={handleClick}>Focus the input</button>
+    </>
   );
 }
