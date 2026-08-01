@@ -3,15 +3,12 @@ import { useCallback, useEffect } from "react";
 function DelayedEffect(props: { timerMs: number }) {
   const { timerMs } = props;
 
-  useEffect(
-    () =>
-      setTimeout(() => {
-        /* do stuff */
-      }, timerMs),
-    [timerMs],
-  );
-  // bad example! setTimeout implicitly returns a number
-  // because the arrow function body isn't wrapped in curly braces
+  useEffect(() => {
+    setTimeout(() => {
+      /* do stuff */
+    }, timerMs);
+  }, [timerMs]);
+  // now wrapped in curly braces
   return null;
 }
 
