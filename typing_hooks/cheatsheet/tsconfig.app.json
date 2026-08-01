@@ -15,6 +15,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Added myself */
+    "jsxImportSource": "react",
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
