@@ -1,4 +1,19 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+
+function DelayedEffect(props: { timerMs: number }) {
+  const { timerMs } = props;
+
+  useEffect(
+    () =>
+      setTimeout(() => {
+        /* do stuff */
+      }, timerMs),
+    [timerMs],
+  );
+  // bad example! setTimeout implicitly returns a number
+  // because the arrow function body isn't wrapped in curly braces
+  return null;
+}
 
 export default function App() {
   const memoizedCallback = useCallback((param1: string, param2: number) => {
@@ -15,6 +30,7 @@ export default function App() {
     <div>
       <h1>Welcome to the Cheatsheet App</h1>
       <button onClick={() => memoizedCallback("Hello", 42)}>Click Me</button>
+      <DelayedEffect timerMs={1000} />
     </div>
   );
 }
