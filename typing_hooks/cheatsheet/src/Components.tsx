@@ -1,8 +1,8 @@
 import { use } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { CurrentUserContext } from "./CurrentUserContext";
 
 export const MyComponent = () => {
-  const theme = use(ThemeContext);
+  const currentUser = use(CurrentUserContext);
 
-  return <p>The current theme is {theme}.</p>;
+  return <p>Name: {currentUser?.username}.</p>;
 };
