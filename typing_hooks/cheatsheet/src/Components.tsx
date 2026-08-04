@@ -1,8 +1,7 @@
-import { use } from "react";
-import { CurrentUserContext } from "./CurrentUserContext";
+import { useCurrentUser } from "./CurrentUserContext";
 
 export const MyComponent = () => {
-  const currentUser = use(CurrentUserContext);
+  const currentUser = useCurrentUser();
 
-  return <p>Name: {currentUser?.username}.</p>;
+  return <p>Name of User: {currentUser.username}.</p>;
 };
