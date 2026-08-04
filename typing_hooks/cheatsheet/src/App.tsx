@@ -11,6 +11,16 @@ export default function App() {
     setTheme(e.currentTarget.value as ThemeContextType);
   };
 
+  const handleThemeChange2: (
+    ev: React.ChangeEvent<HTMLSelectElement>,
+  ) => void = (e) => {
+    setTheme(e.currentTarget.value as ThemeContextType);
+  };
+
+  const handleThemeChange3 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTheme(e.currentTarget.value as ThemeContextType);
+  };
+
   return (
     <>
       <select name="theme" value={theme} onChange={handleThemeChange}>
