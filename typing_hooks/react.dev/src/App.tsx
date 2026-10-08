@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 export default function Form() {
   const [valueA, setValueA] = useState("Start typing...");
+  const [valueA1, setValueA1] = useState("Start typing...");
   const [valueB, setValueB] = useState("Start typing...");
 
   const handleChangeA = useCallback<
@@ -13,6 +14,14 @@ export default function Form() {
     },
     [setValueA],
   );
+
+  const handleChangeA1: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    t: number,
+  ) => void = (event, times) => {
+    const newValue = event.target.value.repeat(times);
+    setValueA1(newValue);
+  };
 
   const handleChangeB = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>, times: number) => {
@@ -26,6 +35,7 @@ export default function Form() {
     <>
       <h1>Form</h1>
       <Part n={10} v={valueA} onChange={handleChangeA} />
+      <Part n={7} v={valueA1} onChange={handleChangeA1} />
       <Part n={5} v={valueB} onChange={handleChangeB} />
     </>
   );
